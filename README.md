@@ -1,1 +1,1 @@
-# DjangoREST-Wordplease-practica
+# Wordplease_practica_PythonDjangoREST
