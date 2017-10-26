@@ -11,11 +11,28 @@ from django.views import View
 from tasks.form import PostForm
 from tasks.models import Post, Categorias
 
+def home(request):
+
+    # recupera todas las tareas
+    post = Post.objects.order_by('-created_at').all()
+
+
+
+
+    #crea la representacion de los datos
+    context ={
+        'post_objects': post,
+
+    }
+
+    #responder
+    return render(request, 'tasks/home.html', context)
 
 def post_list(request):
 
     # recupera todas las tareas
-    post = Post.objects.order_by('-created_at').all()
+    #publico = Post.Estado.objects.get(estado='publico')
+    post = Post.objects.filter(estado='PUB').order_by('-created_at')
 
 
 

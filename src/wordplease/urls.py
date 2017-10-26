@@ -18,7 +18,7 @@ from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
 from tasks.api import TaskViewSet
-from tasks.views import post_list, post_detalle, mis_post, NewPost
+from tasks.views import post_list, post_detalle, mis_post, NewPost, home
 from user.api import UserViewSet
 
 from user.views import LoginView, logout, RegistroUsuario
@@ -29,7 +29,7 @@ router.register("tasks", TaskViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', post_list, name='post_list'),
+    url(r'^$', home, name='home'),
     url(r'^blogs$', post_list, name='post_list'),
     url(r'^signup$', RegistroUsuario.as_view(), name='RegistroUsuario'),
     url(r'^blogs/(?P<user>[-\w]+)/$', mis_post, name='mis_post'),

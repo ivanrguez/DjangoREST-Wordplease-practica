@@ -4,12 +4,14 @@
 <tbody>
 
 {% for post in mi_post %}
+
     <p>
         <a  href="{% url 'post_detalle' user post.pk %}" title="view {{ post.titulo }}">
             {{post.titulo}}
         </a>
-            <p>{{post.categoria}}</p>
+            <p>{{ post.categoria.all|join:", " }}</p>
             <p>{{post.intro}}</p>
+            <p><img src="{{ post.imagen }}" /></p>
             <p>{{post.get_user_display}}</p>
             <p>{{post.created_at}}</p>
 

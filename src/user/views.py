@@ -29,7 +29,7 @@ class LoginView(View):
             if user is not None:
                 #usuario autenticado
                 django_login(request,user)
-                url = request.GET.get('next', 'post_list')
+                url = request.GET.get('next', 'new_post')
                 return  redirect(url)
             else:
                 #usuario no autenticado
@@ -45,4 +45,4 @@ class RegistroUsuario(CreateView):
     model = User
     template_name = 'tasks/registro.html'
     form_class = RegistroForm
-    success_url = reverse_lazy('basico.html')
+    success_url = reverse_lazy('new_post')
