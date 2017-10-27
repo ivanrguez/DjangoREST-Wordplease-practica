@@ -1,0 +1,25 @@
+{% extends 'basico.html' %}
+
+{% block content %}
+<tbody>
+
+    {% for post in post_objects %}
+    <p>
+        {% if user.is_authenticated %}
+        <a  href="{% url 'post_detalle' user post.pk %}" title="view {{ post.titulo }}">
+            {{post.titulo}}
+        </a>
+        <p>{{post.user}}</p>
+        {% else %}
+        <p style="color:red">no estas autenticado</p>
+        {% endif %}
+
+            <p>{{post.intro}}</p>
+            <p><img src="{{ post.imagen }}" /></p>
+            <p>{{post.get_estado_display}}</p>
+
+
+    {% endfor %}
+    </p>
+</tbody>
+{% endblock %}

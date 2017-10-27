@@ -1,0 +1,22 @@
+{% extends 'basico.html' %}
+{% block title %} New post {% endblock %}
+{% block content %}
+<h2>new post</h2>
+
+{% autoescape off %}
+    <div>{{ mensaje }}</div>
+{% endautoescape %}
+
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{form.as_p}}
+    <div>
+        <button>submit</button>
+    </div>
+
+
+
+</form>
+
+{% endblock %}
