@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'ui',
     'user',
     'tasks',
-    'rest_framework'
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [

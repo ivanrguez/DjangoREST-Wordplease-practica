@@ -13,5 +13,7 @@
     <p>{{post.deadline}}</p>
     <p>{{post.created_at}}</p>
 
+{% render_comment_list for [object] %} <!--listado de comentarios-->
+{% load comments %}
 
 {% endblock %}

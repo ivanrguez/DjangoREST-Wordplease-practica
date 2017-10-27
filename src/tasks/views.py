@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -32,8 +33,11 @@ def post_list(request):
 
     # recupera todas las tareas
     #publico = Post.Estado.objects.get(estado='publico')
-    post = Post.objects.filter(estado='PUB').order_by('-created_at')
+    if not request.user.is_authenticated:
+        post = Post.objects.filter(estado='PUB').order_by('-created_at')
 
+    else:
+        post = Post.objects.order_by('-created_at').all()
 
 
 
