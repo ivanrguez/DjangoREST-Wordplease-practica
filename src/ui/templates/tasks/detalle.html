@@ -13,5 +13,24 @@
     <p>{{post.deadline}}</p>
     <p>{{post.created_at}}</p>
 
+<h2>Deja un comentario</h2>
+<a class="btn btn-default" href="{% url 'add_comment_to_post' user post.pk %}">Add comment</a>
+<h1>New comment</h1>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
+<hr>
+<h2>Comentarios</h2>
+{% for comment in post.comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
 
+{% endfor %}
 {% endblock %}

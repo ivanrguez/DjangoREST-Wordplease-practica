@@ -4,12 +4,12 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
 
 
-from tasks.form import PostForm
+from tasks.form import PostForm, CommentForm
 from tasks.models import Post, Categorias
 
 def home(request):
@@ -119,3 +119,37 @@ class NewPost(View):
         }
 
         return render(request, 'tasks/new.html', context)
+
+
+class view(View):
+    #def add_comment_to_post(self, request):
+        #form = CommentForm()
+
+        #context = {
+         #   'form': form
+        #}
+        #return render(request, 'tasks/add_comment_to_post.html', context)
+    def add_comment_to_post(request, user, post_pk):
+        try:
+            u = User.objects.get(username=user).id
+            post = Post.objects.filter(user=u).select_related().get(pk=post_pk)
+        except Post.DoesNotExist:
+            return render(request, '404.html', {}, status=404)
+        except Post.MultipleObjectsReturned:
+            return HttpResponse('existen varias tareas con ese identificador', status=300)
+        context = {
+            'post': post
+        }
+        return render(request, 'tasks/detalle.html', context)
+
+       # post = get_object_or_404(Post,user, pk=post_pk)
+        #if request.method == "POST":
+        #    form = CommentForm(request.add_comment_to_post(user=user,pk=post_pk))
+        # if form.is_valid():
+        #     comment = form.save(commit=False)
+        #     comment.post = post
+        #    comment.save()
+        #    return redirect('detalle', pk=post.pk)
+        # else:
+        #    form = CommentForm()
+        #return render(request, 'tasks/add_comment_to_post.html', {'form': form})
