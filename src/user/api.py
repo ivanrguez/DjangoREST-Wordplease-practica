@@ -13,7 +13,7 @@ from user.serializers import UserSerializer, UsersListSerializer
 
 class UserViewSet(GenericViewSet):
 
-    permission_classes = (UserPermission,)
+    permission_classes = (UserPermission)
     def list(self, request):
         """
         Returns a list of the system users

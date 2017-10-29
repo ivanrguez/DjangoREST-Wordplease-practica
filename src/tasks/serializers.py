@@ -7,10 +7,15 @@ from tasks.models import Post
 class TasksListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id','titulo', 'imagen', 'intro', 'url', 'created_at')
+        fields = ('id', 'user', 'titulo', 'imagen', 'intro', 'url', 'estado' ,'created_at')
 
 class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
         fields = '__all__'
+
+class BlogsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('id','titulo', 'imagen', 'estado')

@@ -11,6 +11,7 @@ html {
 }
 body {
   margin: 0;
+  padding-left: 15px;
 }
 article,
 aside,
@@ -85,6 +86,7 @@ sub {
 }
 img {
   border: 0;
+  width: 200px;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -233,6 +235,7 @@ th {
   h3 {
     orphans: 3;
     widows: 3;
+
   }
   h2,
   h3 {
@@ -1288,6 +1291,7 @@ h6,
 }
 p {
   margin: 0 0 10px;
+
 }
 .lead {
   margin-bottom: 20px;

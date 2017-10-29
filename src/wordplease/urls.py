@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
-from tasks.api import TaskViewSet
+from tasks.api import TaskViewSet, BlogsViewSet
 from tasks.views import post_list, post_detalle, mis_post, NewPost, home
 from user.api import UserViewSet
 
@@ -26,6 +26,7 @@ from user.views import LoginView, logout, RegistroUsuario
 router = DefaultRouter()
 router.register("user", UserViewSet, base_name="user_api")
 router.register("tasks", TaskViewSet)
+router.register("blogs", BlogsViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
