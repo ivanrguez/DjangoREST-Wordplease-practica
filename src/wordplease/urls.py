@@ -18,7 +18,7 @@ from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
 from tasks.api import TaskViewSet, BlogsViewSet
-from tasks.views import post_list, post_detalle, mis_post, NewPost, home, view
+from tasks.views import post_list, post_detalle, mis_post, NewPost, home, View
 from user.api import UserViewSet
 
 from user.views import LoginView, logout, RegistroUsuario
@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^login$', LoginView.as_view(), name='login'),
     url(r'^logout$', logout, name='logout'),
 
-    url(r'^blogs/(?P<user>[-\w]+)/(?P<pk>\d+)/comment/$', view.add_comment_to_post, name='add_comment_to_post'),
+    url(r'^blogs/(?P<user>[-\w]+)/(?P<post_pk>[0-9]+)/comment/$', View.add_comment_to_post, name='add_comment_to_post'),
 
 # API Users & Tasks
     url(r'^api/1.0/', include(router.urls)),
